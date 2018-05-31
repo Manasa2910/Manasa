@@ -1,0 +1,21 @@
+<nav class="navbar navbar-dark bg-dark">
+  <%= link_to "Movie Reviews", root_path, class: "navbar-brand"%>
+
+  <ul class="nav navbar-nav" style="flex-direction: row;">
+    <% if user_signed_in? %>
+      <li class="nav-item">
+      <%= link_to('Logout |', destroy_user_session_path, method: :delete, style: "color: #FFFFFF", class: "nav-link") %>        
+      </li>
+      <li class="nav-item">
+        <%= link_to(' Edit Profile', edit_user_registration_path, class: "nav-link") %>
+      </li>
+    <% else %>
+      <li class="nav-item">
+        <%= link_to('Login |', new_user_session_path, style: "color: #FFFFFF", class: "nav-link")  %>&nbsp;
+      </li>
+      <li class="nav-item">
+        <%= link_to('Register', new_user_registration_path, style: "color: #FFFFFF", class: "nav-link")  %>
+      </li>
+    <% end %>
+  </ul>
+</nav>

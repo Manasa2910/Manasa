@@ -1,0 +1,26 @@
+<div class="row">
+	<h2>Movie reviews for Movie Id : <%= params[:movie_id] %></h2>
+</div>
+<% if @reviews.present? %>
+
+	<div class="row" style="padding: 5px;">
+		<% @reviews.each do |review|%>
+			<div class="col-8 border mb-4">
+				<b><%= review.user.full_name %> says:</b>
+				<p><%= review.comment.present? ? review.comment : "N/A" %></p>
+				<b>Rated Movie :</b> <%= "#{review.rating} out of 5"  %>
+			</div>
+		<% end %>
+		
+	</div>
+<% else %>
+	<div class="row" style="padding: 5px;">
+		<h4>No Reviews yet</h4>
+	</div>
+<% end %>
+<div class="col">
+	<p>
+		<%= link_to "Leave Review", new_review_path(movie_id: params[:movie_id]) %> | 
+		<%= link_to "Back", root_path %>
+	</p>
+</div>
